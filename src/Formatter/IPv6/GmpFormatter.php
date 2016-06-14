@@ -38,16 +38,13 @@ class GmpFormatter implements FormatterInterface
         // reverse the blocks: last block (right one) should be first in the blocks array
         $ipBinaryBlocks = array_reverse($ipBinaryBlocks, false);
 
-        $hexStringBlocks = [];
-        for ($blockIndex = 0; $blockIndex < 8; $blockIndex++) {
-            if (isset($ipBinaryBlocks[$blockIndex])) {
-                $hexStringBlocks[$blockIndex] = bindec($ipBinaryBlocks[$blockIndex]);
-            } else {
-                $hexStringBlocks[$blockIndex] = 0x0000;
-            }
+        // initialize as ::
+        $hexStringBlocks = array_fill(0, 7, 0);
+
+        foreach ($ipBinaryBlocks as $blockIndex => $ipBinaryBlock) {
+            $hexStringBlocks[$blockIndex] = bindec($ipBinaryBlock);
         }
 
         return vsprintf('%X:%X:%X:%X:%X:%X:%X:%X', array_reverse($hexStringBlocks));
-
     }
 }

@@ -17,23 +17,23 @@ class Address
     /**
      * @var \GMP
      */
-    private $ip;
+    private $gmpAddress;
 
     /**
      * Address constructor.
-     * @param \GMP $ip
+     * @param \GMP $gmpAddress
      */
-    public function __construct(\GMP $ip)
+    private function __construct(\GMP $gmpAddress)
     {
-        $this->ip = $ip;
+        $this->gmpAddress = $gmpAddress;
     }
 
 
     public static function createIPv4Mapped(\BreiteSeite\IP\IPv4\Address $ipv4Address) : self
     {
-        $IPv4MappedIPv6BinaryString = str_repeat('0', 80) . str_repeat('1', 16) . decbin($ipv4Address->getAsInteger());
+        $mappedIpBinaryString = str_repeat('0', 80) . str_repeat('1', 16) . decbin($ipv4Address->getAsInteger());
 
-        return new self(gmp_init($IPv4MappedIPv6BinaryString, 2));
+        return new self(gmp_init($mappedIpBinaryString, 2));
     }
 
     /**
@@ -41,6 +41,6 @@ class Address
      */
     public function createFormatter() : FormatterInterface
     {
-        return new GmpFormatter($this->ip);
+        return new GmpFormatter($this->gmpAddress);
     }
 }

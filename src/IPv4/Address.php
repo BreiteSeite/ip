@@ -14,15 +14,15 @@ class Address
     /**
      * @var int
      */
-    private $ip;
+    private $address;
 
     /**
      * Address constructor.
-     * @param int $ip
+     * @param int $address
      */
-    public function __construct(int $ip)
+    private function __construct(int $address)
     {
-        $this->ip = $ip;
+        $this->address = $address;
     }
 
     /**
@@ -39,6 +39,6 @@ class Address
      */
     public function getAsInteger(): int
     {
-        return $this->ip;
+        return $this->address;
     }
 }

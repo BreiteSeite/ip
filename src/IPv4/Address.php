@@ -12,7 +12,7 @@ namespace BreiteSeite\IP\IPv4;
 class Address
 {
     /**
-     * @var integer
+     * @var int
      */
     private $ip;
 
@@ -20,7 +20,7 @@ class Address
      * Address constructor.
      * @param int $ip
      */
-    public function __construct($ip)
+    public function __construct(int $ip)
     {
         $this->ip = $ip;
     }

@@ -14,6 +14,9 @@ use BreiteSeite\IP\Formatter\IPv6\GmpFormatter;
 class GmpFormatterTest extends \PHPUnit_Framework_TestCase
 {
 
+    /**
+     * @covers \BreiteSeite\IP\Formatter\IPv6\GmpFormatter::getAsHexString()
+     */
     public function testGetAsHexString()
     {
         // https://en.wikipedia.org/wiki/IPv6_address#/media/File:Ipv6_address_leading_zeros.svg

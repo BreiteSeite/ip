@@ -18,6 +18,7 @@ class AddressTest extends \PHPUnit_Framework_TestCase
      * @param int $integer
      *
      * @dataProvider getIpAddressAsStringAndInteger
+     * @covers \BreiteSeite\IP\IPv4\Address::getAsInteger()
      */
     public function testFromString(string $ip, int $integer)
     {

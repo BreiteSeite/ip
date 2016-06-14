@@ -25,6 +25,9 @@ class GmpFormatter implements FormatterInterface
         $this->gmpNumber = $gmpNumber;
     }
 
+    /**
+     * @return string
+     */
     public function getAsHexString(): string
     {
         $ipBinaryString = gmp_strval($this->gmpNumber, 2);

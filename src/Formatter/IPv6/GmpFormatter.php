@@ -35,9 +35,6 @@ class GmpFormatter implements FormatterInterface
 
         $ipBinaryBlocks = str_split($ipBinaryString, 16);
 
-        // reverse the blocks: last block (right one) should be first in the blocks array
-        $ipBinaryBlocks = array_reverse($ipBinaryBlocks, false);
-
         // initialize as ::
         $hexStringBlocks = array_fill(0, 7, 0);
 
@@ -45,6 +42,6 @@ class GmpFormatter implements FormatterInterface
             $hexStringBlocks[$blockIndex] = bindec($ipBinaryBlock);
         }
 
-        return vsprintf('%X:%X:%X:%X:%X:%X:%X:%X', array_reverse($hexStringBlocks));
+        return vsprintf('%X:%X:%X:%X:%X:%X:%X:%X', $hexStringBlocks);
     }
 }

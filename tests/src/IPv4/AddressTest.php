@@ -20,11 +20,12 @@ class AddressTest extends \PHPUnit_Framework_TestCase
      * @dataProvider getIpAddressAsStringAndInteger
      * @covers \BreiteSeite\IP\IPv4\Address::getAsInteger()
      */
-    public function testFromString(string $ip, int $integer)
+    public function testFromString(string $ip, int $integer, string $binary)
     {
         $ip = Address::fromString($ip);
 
         $this->assertSame($integer, $ip->getAsInteger());
+        $this->assertSame($binary, $ip->getAsBinary());
     }
 
     /**
@@ -33,8 +34,9 @@ class AddressTest extends \PHPUnit_Framework_TestCase
     public function getIPAddressAsStringAndInteger(): array
     {
         return [
-           ['0.0.0.0', 0],
-           ['127.0.0.1', 2130706433]
+           ['0.0.0.0', 0, '00000000000000000000000000000000'],
+           ['127.0.0.1', 2130706433, '01111111000000000000000000000001'],
         ];
     }
+
 }

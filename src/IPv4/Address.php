@@ -27,7 +27,7 @@ class Address
 
     /**
      * @param string $ipv4Address
-     * @return $this
+     * @return self
      */
     public static function fromString(string $ipv4Address)
     {
@@ -40,5 +40,10 @@ class Address
     public function getAsInteger(): int
     {
         return $this->address;
+    }
+
+    public function getAsBinary(): string
+    {
+        return str_pad(decbin($this->address), 32, '0', STR_PAD_LEFT);
     }
 }
